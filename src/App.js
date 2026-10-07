@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const studentList = ['john', 'jane', 'bob', 'alice'];
+  const navigate = useNavigate();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <div className="row">
+        <h1>Students List </h1>
+        <ul>
+          {studentList.map((name) => (
+            <li key={name}>
+              <button className="btn btn-primary" onClick={() => navigate(`/student/${name}`)}>
+                {name}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/student/Riya")}
         >
-          Learn React
-        </a>
-      </header>
+          Go to Riya
+        </button>
+      </div>
+
     </div>
   );
 }
